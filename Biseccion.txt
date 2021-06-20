@@ -1,0 +1,37 @@
+from math import cos, ceil, log, sqrt
+
+
+
+def bisection1(f, a, b, TOL, Nmax):
+    for i in range(0, Nmax):
+        p = (a + b)/2
+        
+        print(str(i+1) + " a = " + str(a) + " b = " + str(b) + " \t  p = " + str(p) + " \t f(p) = " + str(f(p))  )
+        
+        if ( f(p) == 0 or (b-a)/2 < TOL):
+            break
+        elif ( f(a)*f(p) < 0 ):
+            b = p
+        else:
+            a = p
+            
+            
+def f1(x):
+    return (x**3)+4*(x**2)-10
+    
+bisection1(f1, 1, 2, 10**-4 , 50);
+                
+def bisection2(f, a, b, TOL):
+    n = ceil( log( (b-a)/TOL , 2 ) ) 
+    for i in range(0, n):
+        p = (a + b)/2
+        print( str(i) + " \t " + str(p) + " \t " + str(f(p))  )
+        if( f(a)*f(p) < 0 ):
+            b = p
+        else:
+            a = p
+         
+'''Re = 10**4
+def f2(x):
+   return -0.4 + 1.74*log(Re*sqrt(x)) - sqrt(1/x)
+bisection2(f2, 0.005, 0.01, 10**-20)'''
